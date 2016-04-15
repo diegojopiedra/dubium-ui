@@ -1,0 +1,1 @@
+var app = angular.module('Dubium', ['ui.materialize', 'ngRoute', 'ngResource', 'chart.js']);

@@ -1,0 +1,5 @@
+Materialize v0.97.5
+jQuery v2.2.2
+AngularJS v1.5.3
+Angular-chart v0.9.0
+Chart.js 

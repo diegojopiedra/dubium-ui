@@ -10,15 +10,21 @@
 
         <ul class="collapsible" data-collapsible="accordion" watch>
             <li class="active">
-                <div class="collapsible-header active">
+                <div class="collapsible-header active orange white-text">
                     <i class="material-icons left">settings</i>
-                    Opciones
+                    Segmentación
                 </div>
                 <div class="collapsible-body card-panel">
                     <form action="" class="row">
                         <div class="col s12 m12 l3">
                             <h5>Años</h5>
-                            Publicado entre <b>{{yearsRank.start[0]}}</b> y <b>{{yearsRank.start[1]}}</b>
+                            Publicado 
+                            <span ng-hide="yearsRank.start[0] == yearsRank.start[1]">
+                                entre <b>{{yearsRank.start[0]}}</b> y <b>{{yearsRank.start[1]}}</b>
+                            </span>
+                            <span ng-show="yearsRank.start[0] == yearsRank.start[1]">
+                                en <b>{{yearsRank.start[0]}}</b>
+                            </span>
                             <br>
                             <br>
                             <div ya-no-ui-slider='yearsRank' style="margin-bottom: 65px"></div>
@@ -27,31 +33,43 @@
                             <h5>Agrupar por</h5>
                             <ul>
                                 <li>
-                                    <input type="checkbox" class="filled-in" id="type" checked="checked" />
-                                     <label for="type">Tipo de trabajo</label>   
-                                </li>
-                                <li>
                                     <input type="checkbox" class="filled-in" id="grade" checked="checked" />
                                     <label for="grade">Grado académico</label> 
                                 </li>
-                            </ul>      
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type"/>
+                                     <label for="type">Tipo de trabajo</label>   
+                                </li>
+                            </ul>
+
+                            <h5>Ordenar por</h5>
+                            <ul>
+                                <li>
+                                    <input class="with-gap" name="group1" type="radio" id="publicationYear" checked="checked" />
+                                    <label for="publicationYear">Fecha de publicación</label>
+                                </li>
+                                <li>
+                                    <input class="with-gap" name="group1" type="radio" id="a-z"  />
+                                    <label for="a-z">Orden alfabético</label>
+                                </li>
+                            </ul>         
                         </div>
                         <div class="col s12 m4 l3">
                             <h5>Tipos de trabajo</h5>
                             <ul>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="type1" checked="checked" />
                                     <label for="type1">Seminario de Graduación</label> 
                                 </li>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="type2" checked="checked" />
                                     <label for="type2">Práctica Dirigida</label>     
                                 </li>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="type3" checked="checked" />
                                     <label for="type3">Proyecto de Graduación</label>  
                                 </li>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="type4" checked="checked" />
                                     <label for="type4">Tesis</label>   
                                 </li>
@@ -60,19 +78,22 @@
                         <div class="col s12 m4 l3">
                             <h5>Grados académicos</h5>
                             <ul>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="grade1" checked="checked" />
                                     <label for="grade1">Licenciatura</label>
                                 </li>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="grade2" checked="checked" />
                                     <label for="grade2">Maestría</label> 
                                 </li>
-                                <li>
+                                <li class="truncate">
                                     <input type="checkbox" class="filled-in" id="grade3" checked="checked" />
                                     <label for="grade3">Doctorado</label> 
                                 </li>
                             </ul>
+                        </div>
+                        <div class="col s12">
+                            <input type="text" placeholder="Filtrar por nombre">
                         </div>
                     </form>
                 </div>

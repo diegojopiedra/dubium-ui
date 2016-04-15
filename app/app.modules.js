@@ -1,1 +1,1 @@
-var app = angular.module('Dubium', ['ui.materialize', 'ngRoute', 'ngResource', 'chart.js']);
+var app = angular.module('Dubium', ['ui.materialize', 'ngRoute', 'ngResource', 'chart.js', 'ya.nouislider']);

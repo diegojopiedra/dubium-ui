@@ -1,63 +1,83 @@
 <div class="row">
 	<div class="col s12">
 		<div class="card-panel">
-			<h2 class="center-align indigo-text">Lista de trabajos</h2>
+			<h2 class="center-align light-green-text text-darken-3">Lista de trabajos</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum quis dolorum officia eius veritatis alias assumenda, saepe fuga nesciunt, quos, eligendi unde nobis. Distinctio dolor atque ea vitae maiores, sit.
 			</p>
-            <form action="" class="row">
-                <div class="col s12 m12 l3">
-                    <h5>Años</h5>
-                    <p>Desde <b>{{yearsRank.start[0]}}</b> hasta <b>{{yearsRank.start[1]}}</b></p>
-                    <div ya-no-ui-slider='yearsRank' style="margin-bottom: 65px"></div>
-                </div>
-                <div class="col s12 m4 l3">
-                    <h5>Agrupar por</h5>
-                    <p>
-                        <input type="checkbox" class="filled-in" id="type" checked="checked" />
-                        <label for="type">Tipo de trabajo</label>             
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="grade" checked="checked" />
-                        <label for="grade">Grado académico</label>            
-                    </p>
-                </div>
-                <div class="col s12 m4 l3">
-                    <h5>Tipos de trabajo</h5>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="type1" checked="checked" />
-                        <label for="type1">Seminario de Graduación</label>            
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="type2" checked="checked" />
-                        <label for="type2">Práctica Dirigida</label>            
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="type3" checked="checked" />
-                        <label for="type3">Proyecto de Graduación</label>            
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="type4" checked="checked" />
-                        <label for="type4">Tesis</label>            
-                    </p>
-                </div>
-                <div class="col s12 m4 l3">
-                    <h5>Grados académicos</h5>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="grade1" checked="checked" />
-                        <label for="grade1">Licenciatura</label>            
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="grade2" checked="checked" />
-                        <label for="grade2">Maestría</label>            
-                    </p>
-                    <p> 
-                        <input type="checkbox" class="filled-in" id="grade3" checked="checked" />
-                        <label for="grade3">Doctorado</label>            
-                    </p>
-                </div>
-            </form>
+                    
 		</div>
+
+        <ul class="collapsible" data-collapsible="accordion" watch>
+            <li class="active">
+                <div class="collapsible-header active">
+                    <i class="material-icons left">settings</i>
+                    Opciones
+                </div>
+                <div class="collapsible-body card-panel">
+                    <form action="" class="row">
+                        <div class="col s12 m12 l3">
+                            <h5>Años</h5>
+                            Publicado entre <b>{{yearsRank.start[0]}}</b> y <b>{{yearsRank.start[1]}}</b>
+                            <br>
+                            <br>
+                            <div ya-no-ui-slider='yearsRank' style="margin-bottom: 65px"></div>
+                        </div>
+                        <div class="col s12 m4 l3">
+                            <h5>Agrupar por</h5>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type" checked="checked" />
+                                     <label for="type">Tipo de trabajo</label>   
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="grade" checked="checked" />
+                                    <label for="grade">Grado académico</label> 
+                                </li>
+                            </ul>      
+                        </div>
+                        <div class="col s12 m4 l3">
+                            <h5>Tipos de trabajo</h5>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type1" checked="checked" />
+                                    <label for="type1">Seminario de Graduación</label> 
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type2" checked="checked" />
+                                    <label for="type2">Práctica Dirigida</label>     
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type3" checked="checked" />
+                                    <label for="type3">Proyecto de Graduación</label>  
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="type4" checked="checked" />
+                                    <label for="type4">Tesis</label>   
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col s12 m4 l3">
+                            <h5>Grados académicos</h5>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="grade1" checked="checked" />
+                                    <label for="grade1">Licenciatura</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="grade2" checked="checked" />
+                                    <label for="grade2">Maestría</label> 
+                                </li>
+                                <li>
+                                    <input type="checkbox" class="filled-in" id="grade3" checked="checked" />
+                                    <label for="grade3">Doctorado</label> 
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </li>
+        </ul>
 	</div>
 	<div class="col s12 m6 l4">
 		<ul class="collection with-header z-depth-1">

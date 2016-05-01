@@ -1,0 +1,85 @@
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<div class="card-panel">
+				<h4 class="orange-text">
+					Autores
+				</h4>
+
+				<div class="alert alert-info" ng-hide="true">
+					<p>Sort Type: {{ sortType }}</p>
+					<p>Sort Reverse: {{ sortReverse }}</p>
+					<p>Search Query: {{ searchAuthor }}</p>
+				</div>
+
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Buscar" ng-model="searchAuthor">
+					</div>
+				</form>
+
+				<table class="striped">
+
+					<thead>
+						<tr class="unselectable">
+							<td>
+								<a class="indigo-text" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+									Nombre
+									<i ng-show="sortType == 'name' && !sortReverse" class="material-icons icon-aling">keyboard_arrow_down</i>
+									<i ng-show="sortType == 'name' && sortReverse" class="material-icons icon-aling">keyboard_arrow_up</i>
+								</a>
+							</td>
+							<td>
+								<a class="indigo-text" ng-click="sortType = 'date'; sortReverse = !sortReverse">
+									Fecha de registro
+									<i ng-show="sortType == 'date' && !sortReverse" class="material-icons icon-aling">keyboard_arrow_down</i>
+									<i ng-show="sortType == 'date' && sortReverse" class="material-icons icon-aling">keyboard_arrow_up</i>
+								</a>
+							</td>
+							<td>
+								<span class="indigo-text">
+									
+								</span>
+							</td>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr ng-repeat="author in authros | orderBy:sortType:sortReverse | filter:searchAuthor">
+							<td>{{ author.name }}</td>
+							<td>{{ author.date }}</td>
+							<td>
+								<p>
+							      	<input type="checkbox" class="filled-in" id="filled-in-box{{$index}}" />
+							      	<label for="filled-in-box{{$index}}"></label>
+							    </p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+	<a class="btn-floating btn-large red">
+		<i class="large material-icons">mode_edit</i>
+	</a>
+	<ul>
+		<li>
+			<a class="btn-floating red" tooltipped data-position="left" data-delay="50" data-tooltip="Eliminar">
+				<i class="material-icons">delete</i>
+			</a>
+		</li>
+		<li>
+			<a class="btn-floating green" tooltipped data-position="left" data-delay="50" data-tooltip="Crear">
+				<i class="material-icons">add</i>
+			</a>
+		</li>
+		<li>
+			<a class="btn-floating orange" tooltipped data-position="left" data-delay="50" data-tooltip="Ver">
+				<i class="material-icons">remove_red_eye</i>
+			</a>
+		</li>
+	</ul>
+</div>

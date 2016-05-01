@@ -1,4 +1,4 @@
-app.controller('worksController', ['$scope', '$http', function($scope, $http) {
+app.controller('worksController', ['$scope', 'worksService', function($scope, worksService) {
 	$scope.yearsRank = {
 	    start: [2000, 2015],
 	    step: 1,
@@ -12,4 +12,14 @@ app.controller('worksController', ['$scope', '$http', function($scope, $http) {
 			stepped: true
 		}
 	}
+
+	$scope.delete = function (id) {
+		alert(id);
+	}
+
+	worksService.observeListUpdate(function () {
+		$scope.list = worksService.getList();
+		Materialize.toast(worksService.getStatus().message.es, 4000);
+	});
+
 }]);

@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="Sistema gestor de bases de datos especializado en Ttrabajos Finales de graduación">
+	<link rel="icon" type="image/png" href="d.png">
 
 	<title>Base de datos Dubium</title>
 
@@ -12,6 +13,8 @@
 	<link rel="stylesheet" href="assets/libs/material-icons/icons.css">
 	<link rel="stylesheet" href="assets/libs/angular-chart.js/angular-chart.min.css">
 	<link rel="stylesheet" href="assets/libs/noUiSlider/nouislider.min.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 <body class="grey lighten-3" ng-app='Dubium'>
 
@@ -35,6 +38,7 @@
 	<script src="app/app.config.js"></script>
 	<script src="app/app.modules.js"></script>
 	<script src="app/app.routers.js"></script>
+	<script src="app/app.run.js"></script>
 
 	<script src="app/shared/user/UserService.js"></script>
 	<script src="app/shared/menu/MenuService.js"></script>
@@ -43,6 +47,11 @@
 
 	<script src="app/components/works/worksController.js"></script>
 	<script src="app/components/statistics/statisticsController.js"></script>
+	<script src="app/components/dashboard/dashboardController.js"></script>
 
+	<script src="app/components/works/worksService.js"></script>
+
+	<script src="app/components/authorsDashboard/authorsDashboardController.js"></script>
+	<script src="app/components/author/authorController.js"></script>
 </body>
 </html>

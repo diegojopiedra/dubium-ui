@@ -1,38 +1,177 @@
-<div class="container">
-	<div class="row">
-		<div class="col s12">
-			<div class="card-panel">
-			  	<span class="grey-text right">
-			  		Creado: {{author.created_at}}
-					<br/>
-			  		Modficado: {{author.updated_at}}
-			  	</span>
-				<h4 class="orange-text">
-					Autor
-				</h4>
-				<form class="row">
-					<h5 ng-hide="editingMode" class="col s12">
-						{{author.name}} {{author.fisrt_last_name}} {{author.second_last_name}} <i>( {{author.initials}} )</i>
-					</h5>
-					<div class="input-field col s12 m4 l3" ng-show="editingMode">
-			          	<input id="name" type="text" class="validate" ng-model="authorTemp.name">
-			          	<label for="name">Nombre</label>
-			        </div>
-				</form>
+<div class="row">
 
+	<div class="col s12 m7">
+		<div class="card-panel">
+			<span class="grey-text right">
+				Ingresado {{author.created_at | timeAgo}}
+				<br />
+				Modficado {{author.updated_at | timeAgo}}
+			</span>
+			<h4 class="orange-text">
+				Autor(a)
+			</h4>
+			<div ng-hide="editingMode">
+				<h3>
+					{{author.name}} {{author.fisrt_last_name}} {{author.second_last_name}} 
+					<small class="grey-text">({{author.initials}})</small>
+				</h3>
+				<p>
+					País de origen <b>{{author.country.name}}</b>
+				</p>
 			</div>
+			<form class="row" ng-show="editingMode">
+				<div class="input-field col s6 m3">
+					<input id="name" type="text" class="validate" ng-model="authorTemp.name">
+					<label for="name">Nombre</label>
+				</div>
+				<div class="input-field col s6 m3">
+					<input id="fisrt_last_name" type="text" class="validate" ng-model="authorTemp.fisrt_last_name">
+					<label for="fisrt_last_name">Primer Apellido</label>
+				</div>
+				<div class="input-field col s6 m3">
+					<input id="second_last_name" type="text" class="validate" ng-model="authorTemp.second_last_name">
+					<label for="second_last_name">Segundo Apellido</label>
+				</div>
+				<div class="input-field col s6 m3">
+					<input id="initials" type="text" class="validate" ng-model="authorTemp.initials">
+					<label for="initials">Iniciales</label>
+				</div>
+				<select class="col s6" ng-model="authorTemp.country" material-select watch ng-options="country.name for country in countries track by country.name">
+				</select>
+			</form>
 		</div>
 	</div>
-</div>
-{{author}}
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+	<div class="col s12 m5">
+		<ul class="collapsible" data-collapsible="accordion" watch>
+			<li class="active">
+				<div class="collapsible-header indigo-text active">
+					<i class="material-icons">email</i>
+					Correos electrónicos
+				</div>
+				<div class="collapsible-body">
+					<div class="col s12 indigo lighten-4">
+						<ul class="collection">
+							<li class="collection-item" ng-repeat="email in author.emails track by $index" ng-hide="editingMode"> 
+								{{email}}
+							</li>
+							<li class="collection-item row" ng-repeat="email in authorTemp.emails track by $index" ng-show="editingMode">
+								<div class="input-field col s10">
+									<input id="email" type="text" class="validate" ng-model="authorTemp.emails[$index]">
+									<label for="email">Dirección de correo</label>
+								</div>
+								<a class="btn-floating waves-effect waves-light orange right" ng-click="authorTemp.emails.splice($index, 1)"> 
+									<i class="material-icons">delete</i>
+								</a>
+							</li>
+							<li class="collection-item row" ng-show="editingMode">
+								<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="authorTemp.emails.push('')"> 
+									<i class="material-icons">add</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="active">
+				<div class="collapsible-header indigo-text active">
+					<i class="material-icons">work</i>
+					Pasantías
+				</div>
+				<div class="collapsible-body">
+					<div class="col s12 indigo lighten-4">
+						<ul class="collection">
+							<li class="collection-item" ng-repeat="email in author.emails track by $index" ng-hide="editingMode"> 
+								{{email}}
+							</li>
+							<li class="collection-item row" ng-repeat="email in authorTemp.emails track by $index" ng-show="editingMode">
+								<div class="input-field col s10">
+									<input id="email" type="text" class="validate" ng-model="authorTemp.emails[$index]">
+									<label for="email">Dirección de correo</label>
+								</div>
+								<a class="btn-floating waves-effect waves-light orange right" ng-click="authorTemp.emails.splice($index, 1)"> 
+									<i class="material-icons">delete</i>
+								</a>
+							</li>
+							<li class="collection-item row" ng-show="editingMode">
+								<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="authorTemp.emails.push('')"> 
+									<i class="material-icons">add</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="active">
+				<div class="collapsible-header indigo-text active">
+					<i class="material-icons">school</i>
+					Afiliaciones
+				</div>
+				<div class="collapsible-body">
+					<div class="col s12 indigo lighten-4">
+						<ul class="collection">
+							<li class="collection-item" ng-repeat="email in author.emails track by $index" ng-hide="editingMode"> 
+								{{email}}
+							</li>
+							<li class="collection-item row" ng-repeat="email in authorTemp.emails track by $index" ng-show="editingMode">
+								<div class="input-field col s10">
+									<input id="email" type="text" class="validate" ng-model="authorTemp.emails[$index]">
+									<label for="email">Dirección de correo</label>
+								</div>
+								<a class="btn-floating waves-effect waves-light orange right" ng-click="authorTemp.emails.splice($index, 1)"> 
+									<i class="material-icons">delete</i>
+								</a>
+							</li>
+							<li class="collection-item row" ng-show="editingMode">
+								<a class="btn-floating btn-large waves-effect waves-light red right" ng-click="authorTemp.emails.push('')"> 
+									<i class="material-icons">add</i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
 
-	<button class="btn-large waves-effect green" ng-show="showSave && editingMode" ng-click="save()">
-		<i class="material-icons large left">save</i> Guardar
-	</button>
+	<div class="col s12">
+		<div class="card-panel">
+			<table class="striped responsive-table">
+				<thead>
+					<tr>
+						<th data-field="id">Name</th>
+						<th data-field="name">Item Name</th>
+						<th data-field="price">Item Price</th>
+					</tr>
+				</thead>
 
-	<button class="btn-large waves-effect" ng-click="edit()" ng-class="editingMode?'red':'blue'">
-		<i class="large material-icons left">{{(editingMode)?'cancel':'mode_edit'}}</i>
-		<span ng-hide="editingMode">Activar</span><span ng-show="editingMode">Desactivar</span> modo de edición
-	</button>
-</div>
+				<tbody>
+					<tr>
+						<td>Alvin</td>
+						<td>Eclair</td>
+						<td>$0.87</td>
+					</tr>
+					<tr>
+						<td>Alan</td>
+						<td>Jellybean</td>
+						<td>$3.76</td>
+					</tr>
+					<tr>
+						<td>Jonathan</td>
+						<td>Lollipop</td>
+						<td>$7.00</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+
+		<button class="btn-large waves-effect green" ng-show="showSave && editingMode" ng-click="save()">
+			<i class="material-icons large left">save</i> Guardar
+		</button>
+
+		<button class="btn-large waves-effect" ng-click="edit()" ng-class="editingMode?'red':'blue'">
+			<i class="large material-icons left">{{(editingMode)?'cancel':'mode_edit'}}</i>
+			<span ng-hide="editingMode">Activar</span><span ng-show="editingMode">Desactivar</span> modo de edición
+		</button>
+	</div>

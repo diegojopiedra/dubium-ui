@@ -1,3 +1,3 @@
 var CONFIG = {
-	WSS: 'localhost:8000'
+	WSS: 'http://localhost/Dubium/public/index.php/'
 }

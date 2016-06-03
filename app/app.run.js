@@ -4,6 +4,8 @@ app.run(function () {
 		'EDITOR': 2,
 		'GUEST': 0
 	}*/
+
+
 	Object.equals = function( x, y ) {
 		if ( x === y ) return true;
 		// if both x and y are null or undefined and exactly the same

@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col s12">
+		<div class="card-panel">
+			<input type="text" placeholder="Filtrar por nombre">
+		</div>
+	</div>
+	<div class="col s6 m4 l3" ng-repeat="author in authors">
+		<a  href="#/autor/{{author.id}}">
+			<div class="card row black-text">
+				<img  class="col s12 m4" src="http://localhost/Dubium-ui/assets/img/photo-orange.jpg" style="padding: 0" alt="">
+				<div class="col s12 m8" style="padding: 0.75rem;">
+					<b>{{author.name}}</b>
+					<br>
+					<b>{{author.fisrt_last_name}} {{author.second_last_name}}</b>
+					<br>
+					<small class="grey-text">
+						{{author.initials}}
+					</small>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

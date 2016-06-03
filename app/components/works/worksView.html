@@ -7,7 +7,7 @@
 			</p>
                     
 		</div>
-        {{list}}
+        <!--{{list}}-->
         <ul class="collapsible" data-collapsible="accordion" watch>
             <li class="active">
                 <div class="collapsible-header active orange white-text">
@@ -138,4 +138,16 @@
         </li>
       </ul>
 	</div>
+</div>
+<button class="btn" ng-click="showFrom = !showFrom">
+    show
+</button>
+<div ng-show="showFrom">
+    <input type="text" ng-model="newWork.title" placeholder="title">
+    <input type="text" ng-model="newWork.signarute" placeholder="signarute">
+    <input type="text" ng-model="newWork.mothodology" placeholder="mothodology">
+    <input type="text" ng-model="newWork.publication_date" placeholder="publication_date">
+    <!--<input type="text" ng-model="newWork.type_id" placeholder="type_id">
+    <input type="text" ng-model="newWork.degree_id" placeholder="degree_id">-->
+    <button ng-click="submit()">Enviar</button>
 </div>

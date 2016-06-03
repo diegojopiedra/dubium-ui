@@ -1,11 +1,22 @@
-app.controller('authorController', ['$scope', '$location', 'hotkeys', function($scope, $location, hotkeys) {
-	$scope.author = {"id":1,"name":"Sharon Melissa","fisrt_last_name":"Barrantes","second_last_name":"Mol\u00edna","initials":"SBM","country_id":null,"created_at":"2016-05-01 20:00:01","updated_at":"2016-05-01 20:00:01"};
+app.controller('authorController', ['$scope', '$routeParams', '$http', 'hotkeys', function($scope, $routeParams, $http, hotkeys) {
+	$scope.idAuthor = $routeParams.id;
+	$scope.author = {"id":1,"name":"Diego José","fisrt_last_name":"Piedra","second_last_name":"Araya","initials":"DJ Piedra A","country_id":null,"created_at":"2016-05-01 20:00:01","updated_at":"2016-05-01 20:00:01"};
 	$scope.author.emails = [
 		'diegojopiedra@gmail.com',
 		'diego.piedraaraya@ucr.ac.cr',
 		'diego.piedra@ucrso.info'
 	];
-	$scope.author.country = {"id":"3","name":"Estados Unidos","acronym":"US"};
+	
+	$scope.author.affiliations = [
+		'Universidad de Costa Rica',
+		'Tecnológico de Costa Rica'
+	];
+	
+	$scope.author.interships = [
+		'Mishigan Institut Tecnology'
+	];
+
+	$scope.author.country = {"id":"1","name":"Costa Rica","acronym":"CR"};
 
 	$scope.countries = [
 		{
@@ -35,22 +46,6 @@ app.controller('authorController', ['$scope', '$location', 'hotkeys', function($
 
 	$scope.propertiesChanging = [];
 	var a = 1;
-
-
-	$scope.collapsibleElements = [{
-		icon: 'mdi-image-filter-drama',
-		title: 'First',
-		content: 'Lorem ipsum dolor sit amet.'
-	},{
-		icon: 'mdi-maps-place',
-		title: 'Second',
-		content: 'Lorem ipsum dolor sit amet.'
-	},{
-		icon: 'mdi-social-whatshot',
-		title: 'Third',
-		content: 'Lorem ipsum dolor sit amet.'
-	}
-	];
 
 
 	hotkeys.add({
@@ -91,6 +86,7 @@ app.controller('authorController', ['$scope', '$location', 'hotkeys', function($
 	});
 
 	if(a==1){
+		loadAuthor($scope.idAuthor);
 		$scope.editingMode = false;
 		$scope.showSave = false;
 
@@ -131,6 +127,33 @@ app.controller('authorController', ['$scope', '$location', 'hotkeys', function($
 			}
 			$scope.editingMode = !$scope.editingMode;
 			$scope.authorTemp = JSON.parse(JSON.stringify($scope.author));
+		}
+
+		function loadAuthor(id) {
+			$http.get(CONFIG.WSS + 'author/' + id).then(
+				function (response,b,c) {
+					console.log(response,b,c);
+					status = {
+						code: 1,
+						message: {
+							es: 'Lista cargada correctamente',
+							en: 'Loading list successfully'
+						}
+					}
+					$scope.author = response.data;
+				},
+				function (a,b,c) {
+					console.log(a,b,c);
+					status = {
+						code: 2,
+						message: {
+							es: 'No se ha podidio cargar la lista',
+							en: 'Could not load the list'
+						}
+					}
+					//setList([]);
+				}
+			);
 		}
 	}
 }]);

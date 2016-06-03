@@ -9,7 +9,7 @@ app.service('worksService', ['$http', '$timeout', function ($http, $timeout) {
 		}
 	}
 
-	$http.get('http://localhost:8000/work').then(
+	$http.get(CONFIG.WSS + 'work').then(
 		function (response,b,c) {
 			console.log(response,b,c);
 			status = {

@@ -23,6 +23,10 @@ app.config(['$routeProvider', function  ($routeProvider) {
 			templateUrl: 'app/components/author/authorView.html',
         	controller: 'authorController'
 		})
+		.when('/autores',{
+			templateUrl: 'app/components/authors/authorsView.html',
+        	controller: 'authorsController'
+		})
         .otherwise({
             redirectTo: '/'
         });
